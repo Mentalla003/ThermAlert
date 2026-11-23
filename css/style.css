@@ -1,0 +1,64 @@
+:root {
+  --fond: #b9e8ee;
+  --teal: #1f5c6b;
+  --blanc: #ffffff;
+  --texte: #12343c;
+  --zone-chaud: #f6c6c6;
+  --zone-froid: #cfe4f6;
+  --ok: #c9f0cd;
+  --ok-texte: #1c6b2c;
+  --alerte: #f4b4b4;
+  --alerte-texte: #8a1c1c;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; }
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #2b2b2b;           /* fond autour du "téléphone" sur grand écran */
+  color: var(--texte);
+}
+.app {
+  display: flex; flex-direction: column;
+  max-width: 430px; height: 100%; margin: 0 auto;
+  background: var(--fond);
+}
+.vues { flex: 1; overflow-y: auto; padding: 16px 14px 20px; padding-top: calc(16px + env(safe-area-inset-top, 0px)); }
+.vue[hidden] { display: none; }
+h1 { font-size: 1.6rem; margin-bottom: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* Barre de statut Bluetooth */
+.statut { display: flex; align-items: center; gap: 10px; font-size: .8rem; margin-bottom: 8px; }
+.statut__texte { flex: 1; }
+.statut.connecte .statut__texte::before { content: "● "; color: #2e9e4a; }
+.lien { background: none; border: 0; font: inherit; font-weight: 600; color: var(--teal); text-decoration: underline; cursor: pointer; padding: 4px; }
+
+/* Cartes */
+.carte, .conseil {
+  background: var(--blanc); border-radius: 14px; padding: 12px 14px; margin-bottom: 12px;
+  border: 1px solid #ffffff;
+}
+.petit { font-size: .72rem; color: #4a6870; }
+.temp-ligne { display: flex; align-items: center; justify-content: space-between; margin: 2px 0 6px; }
+.temp-valeur { font-size: 2.1rem; font-weight: 500; }
+.badge { font-size: .7rem; font-weight: 700; padding: 3px 12px; border-radius: 999px; background: #e3e8ea; }
+.badge.stable { background: var(--ok); color: var(--ok-texte); }
+.badge.alerte { background: var(--alerte); color: var(--alerte-texte); }
+#courbe { display: block; width: 100%; height: 150px; margin-bottom: 6px; }
+
+/* Conseils */
+.conseil { display: flex; align-items: center; gap: 14px; }
+.conseil__icone { font-size: 1.8rem; line-height: 1; }
+.conseil__titre { font-size: .95rem; font-weight: 600; }
+.conseil__texte { font-size: .72rem; color: #4a6870; margin-top: 2px; }
+.mention { text-align: center; font-size: .7rem; color: #4a6870; margin-top: 18px; padding: 0 20px; }
+
+/* Barre d'onglets */
+.onglets { display: flex; background: var(--teal); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.onglet {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 12px 0 10px; color: var(--blanc); text-decoration: none; font-size: .85rem; font-weight: 700;
+}
+.onglet svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.onglet[aria-current="page"] { background: var(--blanc); color: var(--teal); }
+.onglet:focus-visible, .lien:focus-visible { outline: 3px solid #f2b705; outline-offset: -3px; }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- Page unique de l'application ThermAlert : contient la vue Accueil, les emplacements des vues Profil et Guide et la barre d'onglets. -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ThermAlert</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <main class="vues">
+
+    <!-- ============ ACCUEIL ============ -->
+    <section id="accueil" class="vue">
+      <div class="statut" id="statut">
+        <span class="statut__texte" id="statut-texte">Mode démo · bracelet simulé</span>
+      </div>
+
+      <article class="carte carte--temp">
+        <p class="petit">Température cutanée · à l'instant</p>
+        <div class="temp-ligne">
+          <span class="temp-valeur" id="temp-valeur">--,-°C</span>
+          <span class="badge" id="badge">En attente</span>
+        </div>
+        <canvas id="courbe" aria-label="Courbe de température"></canvas>
+        <p class="petit" id="pente-texte">Pente : -- °C/min</p>
+      </article>
+
+      <h2 class="sr-only">Conseils</h2>
+      <div id="conseils"></div>
+
+      <p class="mention">Les alertes sont informatives et ne remplacent pas un avis médical.</p>
+    </section>
+
+    <!-- Vues à venir -->
+    <section id="profil" class="vue" hidden><h1>Profil</h1><p>À venir.</p></section>
+    <section id="guide"  class="vue" hidden><h1>Guide</h1><p>À venir.</p></section>
+  </main>
+
+  <nav class="onglets" aria-label="Navigation principale">
+    <a href="#accueil" class="onglet">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Accueil</a>
+    <a href="#profil" class="onglet">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>Profil</a>
+    <a href="#guide" class="onglet">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2zM12 6v14"/></svg>Guide</a>
+  </nav>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
